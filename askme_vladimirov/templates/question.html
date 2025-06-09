@@ -1,0 +1,26 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+
+{% block content %}
+<article class="col d-flex flex-column gap-3">
+
+    {% include 'layouts/one_question.html' %}
+
+    <hr>
+
+    {% for answer in answers %}
+        {% include 'layouts/answer.html' %}
+    {% endfor %}
+
+    <hr>
+
+    <div>
+        <label for="answerTextArea" class="form-label">You can answer too!</label>
+        <textarea class="form-control" id="answerTextArea" rows="3"
+                  placeholder="Write your answer here..."></textarea>
+        <button type="button" class="btn btn-secondary mt-1">Answer</button>
+    </div>
+
+    {% include 'layouts/pagination.html' %}
+</article>
+{% endblock %}

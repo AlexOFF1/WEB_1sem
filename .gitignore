@@ -1,0 +1,4 @@
+askme_vladimirov/venv/
+*.env
+*.idea
+*.pyc
