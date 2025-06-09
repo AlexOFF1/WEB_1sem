@@ -1,2 +1,2 @@
-# WEB project
-VK Education, 1 sem
+# askMe_Vladimirov
+VK Education, 1 sem, WEB project
