@@ -19,19 +19,28 @@
     </form>
 
     <div class="d-flex gap-2 align-items-center">
+
+        {% if user.is_authenticated %}
         <div class="d-flex">
             <img src="{% if user.image %}{{ user.image.url }}{% else %}
                 {% static 'img/guest_user.jpg' %}{% endif %}"
                  class="img-thumbnail" width="50" height="50" alt="Avatar">
         </div>
+
         <div class="user">
-            <div class="user__name">Dr. Pepper</div>
+            <div class="user__name">{{ user.username }}</div>
             <div class="user__links">
                 <a href="{% url 'settings' %}">Settings</a>
-                <a href="#">Log out</a>
+                <a href="{% url 'logout' %}">Log out</a>
             </div>
         </div>
+        {% else %}
+        <div class='not__logged'>
+             <a href="{% url 'login' %}" class="btn btn-outline-success ms-auto">Login</a>
+        </div>
+        {% endif %}
     </div>
+
 </nav>
 
 

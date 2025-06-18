@@ -1,46 +1,20 @@
 {% extends "layouts/base.html" %}
-{% load static %}ntainer mt-3">
+{% load static %}
+{% load bootstrap5 %}
 
 {% block content %}
     <div class="d-flex align-items-center gap-3 mb-2">
         <h2>Registration</h2>
     </div>
-
-    <div class="mb-3">
-        <span class="error__message" style="color: red;"> Some error </span>
-    </div>
-
-    <article class="d-flex flex-column gap-4     me-3">
-        <div class="d-flex">
-            <label for="exampleFormControlInput1" class="form-label col-2">Login</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1">
-        </div>
-        <div class="d-flex">
-            <label for="exampleFormControlInput1" class="form-label col-2">Email</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1">
-        </div>
-        <div class="d-flex">
-            <label for="exampleFormControlInput1" class="form-label col-2">Nickname</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1">
-        </div>
-        <div class="d-flex">
-            <label for="exampleFormControlInput2" class="form-label col-2">Password</label>
-            <input type="password" class="form-control" id="inputPassword" placeholder="********">
-        </div>
-        <div class="d-flex">
-            <label for="exampleFormControlInput2" class="form-label col-2">Repeat password</label>
-            <input type="password" class="form-control" id="inputPassword" placeholder="********">
-        </div>
-        <div class="d-flex">
-            <label for="exampleFormControlInput2" class="form-label col-2">Upload avatar</label>
-            <input class="form-control" type="file" id="formFile">
-        </div>
-        <div class="d-flex">
-            <div class="col-2"></div>
-            <div>
-                <button type="button" class="btn btn-secondary">Log in!</button>
-            </div>
-        </div>
+    
+    <article class="d-flex flex-column gap-4 me-3">
+    <form action="" method="post">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% buttons %}
+            <button type="submit" class="btn-primary mb-2">Register!</button>
+        {% endbuttons %}
+    </form>
     </article>
 
 {% endblock %}

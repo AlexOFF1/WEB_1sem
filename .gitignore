@@ -4,3 +4,4 @@ askme_vladimirov/venv/
 *.pyc
 /.idea
 /.env
+db.sqlite3

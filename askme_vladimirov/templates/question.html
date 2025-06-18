@@ -1,5 +1,6 @@
 {% extends "layouts/base.html" %}
 {% load static %}
+{% load bootstrap5 %}
 
 {% block content %}
 <article class="col d-flex flex-column gap-3">
@@ -13,14 +14,15 @@
     {% endfor %}
 
     <hr>
-
+    <form action="" method="post">
     <div>
-        <label for="answerTextArea" class="form-label">You can answer too!</label>
-        <textarea class="form-control" id="answerTextArea" rows="3"
-                  placeholder="Write your answer here..."></textarea>
-        <button type="button" class="btn btn-secondary mt-1">Answer</button>
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% buttons %}
+            <button type="button" class="btn btn-secondary mt-1">Answer</button>
+        {% endbuttons %}
     </div>
-
+    </form>
     {% include 'layouts/pagination.html' %}
 </article>
 {% endblock %}
