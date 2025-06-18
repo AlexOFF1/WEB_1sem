@@ -1,47 +1,33 @@
 {% extends "layouts/base.html" %}
 {% load static %}
+{% load bootstrap5 %}
 
 {% block content %}
 
-    <div class="d-flex align-items-center gap-3 mb-2">
-        <h2>Settings: </h2>
-        <h2 class="user__name">Dr. Pepper</h2>
-    </div>
-
-    <div class="mb-3">
-        <span class="error__message" style="color: red;"> Some error </span>
-    </div>
-
-    <article class="d-flex flex-column gap-4 me-3">
-        <div class="d-flex">
-            <label for="exampleFormControlInput1" class="form-label col-2">Login</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1">
-        </div>
-        <div class="d-flex">
-            <label for="exampleFormControlInput2" class="form-label col-2">Email</label>
-            <input type="email" class="form-control" id="exampleFormControlInput2">
-        </div>
-        <div class="d-flex">
-            <label for="exampleFormControlInput3" class="form-label col-2">Nickname</label>
-            <input type="email" class="form-control" id="exampleFormControlInput3">
-        </div>
-        <div class="d-flex">
-            <label for="exampleFormControlInput2" class="form-label col-2">Upload avatar</label>
-            <img src="{% if user.image %}{{ user.image.url }}{% else %}{% static 'img/guest_user.jpg' %}{% endif %}"
-                 class="img-thumbnail" width="150" height="150" alt="Current Avatar">
-        </div>
-        <div class="d-flex">
-            <div class="col-2"></div>
-            <div>
-                <input class="form-control" type="file" id="formFile">
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% bootstrap_form form exclude="avatar" %}
+        <div class="mb-3 row">
+            <label class="col-sm-2 col-form-label">Current Avatar</label>
+            <div class="col-sm-10">
+                {% if user.profile.avatar %}
+                    <img src="{{ user.profile.avatar.url }}"
+                         alt="Avatar"
+                         class="img-thumbnail"
+                         style="max-width:150px;">
+                {% else %}
+                    <span class="form-control-plaintext">No avatar uploaded.</span>
+                {% endif %}
             </div>
         </div>
-        <div class="d-flex">
-            <div class="col-2"></div>
-            <div>
-                <button type="button" class="btn btn-secondary">Save</button>
+        <div class="mb-3 row">
+            <div class="offset-sm-2 col-sm-10">
+                {% bootstrap_field form.avatar label=False %}
             </div>
         </div>
-    </article>
+        {% buttons %}
+            <button class="btn btn-secondary" type="submit">Save</button>
+        {% endbuttons %}
+    </form>
 {% endblock %}
 

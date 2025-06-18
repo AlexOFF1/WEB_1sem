@@ -9,8 +9,8 @@
 
     <article class="col d-flex flex-column gap-3">
 
-        {% for question in questions %}
-            {% include "layouts/one_question.html" %}
+        {% for item in questions %}
+            {% include "layouts/one_question.html" with question=item.obj item=item%}
         {% endfor %}
 
         {% include 'layouts/pagination.html' %}

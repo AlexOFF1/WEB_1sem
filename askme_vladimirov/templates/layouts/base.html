@@ -22,8 +22,8 @@
 
         {% if user.is_authenticated %}
         <div class="d-flex">
-            <img src="{% if user.image %}{{ user.image.url }}{% else %}
-                {% static 'img/guest_user.jpg' %}{% endif %}"
+            <img src="{% if user.profile.avatar %}{{ user.profile.avatar.url }}{% else %}
+            {% static 'img/guest_user.jpg' %}{% endif %}"
                  class="img-thumbnail" width="50" height="50" alt="Avatar">
         </div>
 
@@ -73,7 +73,7 @@
         </aside>
     </div>
 </main>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{% static 'js/like_async.js' %}"></script>
 </body>
 
 </html>

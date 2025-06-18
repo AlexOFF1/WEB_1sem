@@ -5,12 +5,12 @@
 {% block content %}
 <article class="col d-flex flex-column gap-3">
 
-    {% include 'layouts/one_question.html' %}
+    {% include 'layouts/one_question.html' with question=question_item.obj item=question_item %}
 
     <hr>
 
-    {% for answer in answers %}
-        {% include 'layouts/answer.html' %}
+    {% for item in answers %}
+        {% include 'layouts/answer.html' with answer=item.obj item=item %}
     {% endfor %}
 
     <hr>
@@ -25,4 +25,5 @@
     </form>
     {% include 'layouts/pagination.html' %}
 </article>
+<script src="{% static 'js/answer_like_async.js' %}"></script>
 {% endblock %}
