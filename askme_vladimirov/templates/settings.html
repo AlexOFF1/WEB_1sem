@@ -27,7 +27,8 @@
         </div>
         <div class="d-flex">
             <label for="exampleFormControlInput2" class="form-label col-2">Upload avatar</label>
-            <img src="..." class="img-thumbnail" width="150" height="150" alt="...">
+            <img src="{% if user.image %}{{ user.image.url }}{% else %}{% static 'img/guest_user.jpg' %}{% endif %}"
+                 class="img-thumbnail" width="150" height="150" alt="Current Avatar">
         </div>
         <div class="d-flex">
             <div class="col-2"></div>

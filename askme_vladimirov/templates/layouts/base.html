@@ -20,12 +20,14 @@
 
     <div class="d-flex gap-2 align-items-center">
         <div class="d-flex">
-            <img src="..." class="img-thumbnail" width="50" height="50" alt="...">
+            <img src="{% if user.image %}{{ user.image.url }}{% else %}
+                {% static 'img/guest_user.jpg' %}{% endif %}"
+                 class="img-thumbnail" width="50" height="50" alt="Avatar">
         </div>
         <div class="user">
             <div class="user__name">Dr. Pepper</div>
             <div class="user__links">
-                <a href="#">Settings</a>
+                <a href="{% url 'settings' %}">Settings</a>
                 <a href="#">Log out</a>
             </div>
         </div>
@@ -46,7 +48,7 @@
                 <h3>Popular tags</h3>
                 <div>
                     {% for tag in tags %}
-                        <a href="{% url 'tag' tag.id %}" class="badge rounded-pill text-bg-primary">{{ tag.name }}</a>
+                        <a href="{% url 'tag' tag.name %}" class="badge rounded-pill text-bg-primary">{{ tag.name }}</a>
                     {% endfor %}
                 </div>
             </section>
@@ -54,13 +56,9 @@
             <section>
                 <h3>Best members</h3>
                 <div>
-                    <a class="d-block" href="#">Member</a>
-                    <a class="d-block" href="#">Member</a>
-                    <a class="d-block" href="#">Member</a>
-                    <a class="d-block" href="#">Member</a>
-                    <a class="d-block" href="#">Member</a>
-                    <a class="d-block" href="#">Member</a>
-                    <a class="d-block" href="#">Member</a>
+                    {% for profile in profiles %}
+                            <a href="#" class="badge rounded-pill text-bg-primary text-decoration-none">{{ profile.user.username }}</a>
+                    {% endfor %}
                 </div>
             </section>
         </aside>
